@@ -31,6 +31,18 @@ function App() {
     if (value.operation === "*") {
       setResult(value.a * value.b);
     }
+
+    if (value.operation === "+") {
+      setResult(value.a + value.b);
+    }
+
+    if (value.operation === "-") {
+      setResult(value.a - value.b);
+    }
+
+    if (value.operation === "/") {
+      setResult(value.a / value.b);
+    }
   }
 
   function clear() {
@@ -44,49 +56,51 @@ function App() {
         <p className="operation">
           {value.a} {value.operation} {value.b}
         </p>
-        <p className="result">{result}</p>
-        {buttons.map((button) => {
-          return (
-            <button
-              className="button button_number"
-              key={button}
-              onClick={() => {
-                handleClick(button);
-              }}
-            >
-              {button}
-            </button>
-          );
-        })}
-        {operations.map((operation) => {
-          return (
-            <button
-              className="button button_operation"
-              key={operation}
-              onClick={() => {
-                handleOperator(operation);
-              }}
-            >
-              {operation}
-            </button>
-          );
-        })}
-        <button
-          className="button button_operation"
-          onClick={() => {
-            clear();
-          }}
-        >
-          Ac
-        </button>
-        <button
-          className="button button_operation"
-          onClick={() => {
-            getOperation();
-          }}
-        >
-          =
-        </button>
+        <p className="result"> {result}</p>
+        <div className="buttons-container">
+          {buttons.map((button) => {
+            return (
+              <button
+                className="button button_number"
+                key={button}
+                onClick={() => {
+                  handleClick(button);
+                }}
+              >
+                {button}
+              </button>
+            );
+          })}
+          {operations.map((operation) => {
+            return (
+              <button
+                className="button button_operation"
+                key={operation}
+                onClick={() => {
+                  handleOperator(operation);
+                }}
+              >
+                {operation}
+              </button>
+            );
+          })}
+          <button
+            className="button button_operation"
+            onClick={() => {
+              clear();
+            }}
+          >
+            Ac
+          </button>
+          <button
+            className="button button_operation"
+            onClick={() => {
+              getOperation();
+            }}
+          >
+            =
+          </button>
+        </div>
       </div>
     </div>
   );

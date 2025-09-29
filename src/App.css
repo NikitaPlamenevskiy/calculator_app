@@ -11,10 +11,17 @@
   padding: 30px;
   padding-top: 130px;
   max-width: 375px;
-  height: 815px;
   background-color: #f7f8fb;
   border-radius: 40px;
   box-shadow: 100px 50px 80px rgba(96, 190, 255, 0.5);
+}
+
+.buttons-container{
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px
 }
 
 .button {

@@ -11,7 +11,7 @@ function App() {
     operation: "",
   });
 
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState("0");
 
   function handleClick(button) {
     if (value.a === null) {
@@ -28,26 +28,20 @@ function App() {
   console.log(value);
 
   function getOperation() {
-    if (value.operation === "*") {
-      setResult(value.a * value.b);
-    }
-
-    if (value.operation === "+") {
-      setResult(value.a + value.b);
-    }
-
-    if (value.operation === "-") {
-      setResult(value.a - value.b);
-    }
-
-    if (value.operation === "/") {
-      setResult(value.a / value.b);
+    const operators = {
+      "+": (a, b) => a + b,
+      "-": (a, b) => a - b,
+      "*": (a, b) => a * b,
+      "/": (a, b) => a / b,
+    };
+    if (operators[value.operation]) {
+      setResult(operators[value.operation](value.a, value.b));
     }
   }
 
   function clear() {
     setValue({ a: null, b: null, operation: "" });
-    setResult("");
+    setResult("0");
   }
 
   return (

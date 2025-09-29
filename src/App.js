@@ -60,19 +60,14 @@ function App() {
         </p>
         <p className="result"> {result}</p>
         <div className="buttons-container">
-          {buttons.map((button) => {
-            return (
-              <button
-                className="button button_number"
-                key={button}
-                onClick={() => {
-                  handleClick(button);
-                }}
-              >
-                {button}
-              </button>
-            );
-          })}
+          <button
+            className="button button_edit"
+            onClick={() => {
+              clear();
+            }}
+          >
+            Ac
+          </button>
           {operations.map((operation) => {
             return (
               <button
@@ -86,14 +81,20 @@ function App() {
               </button>
             );
           })}
-          <button
-            className="button button_operation"
-            onClick={() => {
-              clear();
-            }}
-          >
-            Ac
-          </button>
+          {buttons.map((button) => {
+            return (
+              <button
+                className="button button_number"
+                key={button}
+                onClick={() => {
+                  handleClick(button);
+                }}
+              >
+                {button}
+              </button>
+            );
+          })}
+
           <button
             className="button button_operation"
             onClick={() => {

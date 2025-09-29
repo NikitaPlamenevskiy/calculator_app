@@ -14,10 +14,10 @@ function App() {
   const [result, setResult] = useState("0");
 
   function handleClick(button) {
-    if (value.a === null) {
-      setValue({ ...value, a: button });
+    if (value.operation === "") {
+      setValue({ ...value, a: (value.a ?? "") + button });
     } else {
-      setValue({ ...value, b: button });
+      setValue({ ...value, b: (value.b ?? "") + button });
     }
   }
 

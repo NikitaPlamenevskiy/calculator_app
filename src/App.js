@@ -29,10 +29,18 @@ function App() {
 
   function getOperation() {
     const operators = {
-      "+": (a, b) => a + b,
-      "-": (a, b) => a - b,
-      "*": (a, b) => a * b,
-      "/": (a, b) => a / b,
+      "+": (a, b) => {
+        return `=${a + b}`;
+      },
+      "-": (a, b) => {
+        return `=${a - b}`;
+      },
+      "*": (a, b) => {
+        return `=${a * b}`;
+      },
+      "/": (a, b) => {
+        return `=${a / b}`;
+      },
     };
     if (operators[value.operation]) {
       setResult(operators[value.operation](value.a, value.b));

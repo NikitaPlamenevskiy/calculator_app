@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+import icon_delete from "./icon_delete.svg";
 
-const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const buttons = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "."];
 const operations = ["*", "-", "+", "/"];
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     operation: "",
   });
 
-  const [result, setResult] = useState("0");
+  const [result, setResult] = useState("");
 
   function handleClick(button) {
     if (value.operation === "") {
@@ -25,21 +26,23 @@ function App() {
     setValue({ ...value, operation: button });
   }
 
-  console.log(value);
-
   function getOperation() {
     const operators = {
       "+": (a, b) => {
-        return `=${a + b}`;
+        return `=${Number(a) + Number(b)}`;
       },
       "-": (a, b) => {
-        return `=${a - b}`;
+        return `=${Number(a) - Number(b)}`;
       },
       "*": (a, b) => {
-        return `=${a * b}`;
+        return `=${Number(a) * Number(b)}`;
       },
       "/": (a, b) => {
-        return `=${a / b}`;
+        if (b === "0") {
+          return setResult("Деление на ноль невозможно");
+        }
+
+        return `=${Number(a) / Number(b)}`;
       },
     };
     if (operators[value.operation]) {
@@ -49,16 +52,40 @@ function App() {
 
   function clear() {
     setValue({ a: null, b: null, operation: "" });
-    setResult("0");
+    setResult("");
   }
+
+  function trim() {
+    if (value.a !== null) {
+      setValue({
+        ...value,
+        a: value.a.slice(0, -1),
+        b: value.b,
+        operation: value.operation,
+      });
+    }
+
+    if (value.b !== null) {
+      setValue({
+        ...value,
+        a: value.a,
+        b: value.b.slice(0, -1),
+        operation: value.operation,
+      });
+    }
+  }
+
+  console.log(value);
 
   return (
     <div className="App">
       <div className="calculator-container">
-        <p className="operation">
-          {value.a} {value.operation} {value.b}
-        </p>
-        <p className="result"> {result}</p>
+        <div style={{ width: "100%" }}>
+          <p className="operation">
+            {value.a} {value.operation} {value.b}
+          </p>
+          <p className="result"> {result}</p>
+        </div>
         <div className="buttons-container">
           <button
             className="button button_edit"
@@ -67,6 +94,14 @@ function App() {
             }}
           >
             Ac
+          </button>
+          <button
+            className="button button_edit"
+            onClick={() => {
+              trim();
+            }}
+          >
+            <img className="icon" src={icon_delete} alt="delete-icon" />
           </button>
           {operations.map((operation) => {
             return (
@@ -96,7 +131,7 @@ function App() {
           })}
 
           <button
-            className="button button_operation"
+            className="button button_result"
             onClick={() => {
               getOperation();
             }}

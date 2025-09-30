@@ -23,30 +23,31 @@ function App() {
   }
 
   function handleOperator(button) {
-    setValue({ ...value, operation: button });
+    if (value.a === null) {
+      setValue({ ...value, a: "0", operation: button });
+    } else {
+      setValue({ ...value, operation: button });
+    }
   }
 
   function getOperation() {
     const operators = {
       "+": (a, b) => {
-        return `=${Number(a) + Number(b)}`;
+        return `=${a + b}`;
       },
       "-": (a, b) => {
-        return `=${Number(a) - Number(b)}`;
+        return `=${a - b}`;
       },
       "*": (a, b) => {
-        return `=${Number(a) * Number(b)}`;
+        return `=${a * b}`;
       },
       "/": (a, b) => {
-        if (b === "0") {
-          return setResult("Деление на ноль невозможно");
-        }
-
-        return `=${Number(a) / Number(b)}`;
+        return `=${a / b}`;
       },
     };
+
     if (operators[value.operation]) {
-      setResult(operators[value.operation](value.a, value.b));
+      setResult(operators[value.operation](Number(value.a), Number(value.b)));
     }
   }
 
@@ -74,8 +75,6 @@ function App() {
       });
     }
   }
-
-  console.log(value);
 
   return (
     <div className="App">

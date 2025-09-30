@@ -3,7 +3,7 @@ import "./App.css";
 import icon_delete from "./icon_delete.svg";
 
 const buttons = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "."];
-const operations = ["*", "-", "+", "/"];
+const operations = ["/", "*", "-", "+"];
 
 function App() {
   const [value, setValue] = useState({
@@ -96,41 +96,44 @@ function App() {
           >
             <img className="icon" src={icon_delete} alt="delete-icon" />
           </button>
-          {operations.map((operation) => {
-            return (
-              <button
-                className="button button_operation"
-                key={operation}
-                onClick={() => {
-                  handleOperator(operation);
-                }}
-              >
-                {operation}
-              </button>
-            );
-          })}
-          {buttons.map((button) => {
-            return (
-              <button
-                className="button button_number"
-                key={button}
-                onClick={() => {
-                  handleClick(button);
-                }}
-              >
-                {button}
-              </button>
-            );
-          })}
-
-          <button
-            className="button button_result"
-            onClick={() => {
-              getOperation();
-            }}
-          >
-            =
-          </button>
+          <div className="container">
+            {operations.map((operation) => {
+              return (
+                <button
+                  className="button button_operation"
+                  key={operation}
+                  onClick={() => {
+                    handleOperator(operation);
+                  }}
+                >
+                  {operation}
+                </button>
+              );
+            })}
+            <div className="container container_b">
+              {buttons.map((button) => {
+                return (
+                  <button
+                    className="button button_number"
+                    key={button}
+                    onClick={() => {
+                      handleClick(button);
+                    }}
+                  >
+                    {button}
+                  </button>
+                );
+              })}
+            </div>
+            <button
+              className="button button_result"
+              onClick={() => {
+                getOperation();
+              }}
+            >
+              =
+            </button>
+          </div>
         </div>
       </div>
     </div>

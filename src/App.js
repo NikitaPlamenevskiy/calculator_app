@@ -57,21 +57,15 @@ function App() {
   }
 
   function trim() {
-    if (value.a !== null) {
-      setValue({
-        ...value,
-        a: value.a.slice(0, -1),
-        b: value.b,
-        operation: value.operation,
-      });
-    }
-
     if (value.b !== null) {
       setValue({
         ...value,
-        a: value.a,
         b: value.b.slice(0, -1),
-        operation: value.operation,
+      });
+    } else if (value.a !== null) {
+      setValue({
+        ...value,
+        a: value.a.slice(0, -1),
       });
     }
   }

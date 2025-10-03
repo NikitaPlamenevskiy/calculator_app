@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Calculator } from "./components/Calculator";
 import "./App.css";
 import icon_delete from "./icon_delete.svg";
 
@@ -72,70 +73,69 @@ function App() {
 
   return (
     <div className="App">
-      <div className="calculator-container">
+      <Calculator/>
+      {/* <div className="calculator-container">
         <div style={{ width: "100%" }}>
           <p className="operation">
             {value.a} {value.operation} {value.b}
           </p>
           <p className="result"> {result}</p>
         </div>
-        <div className="buttons-container">
-          <button
-            className="button button_edit"
-            onClick={() => {
-              clear();
-            }}
-          >
-            Ac
-          </button>
-          <button
-            className="button button_edit"
-            onClick={() => {
-              trim();
-            }}
-          >
-            <img className="icon" src={icon_delete} alt="delete-icon" />
-          </button>
-          <div className="container">
-            {operations.map((operation) => {
+        <button
+          className="button button_edit"
+          onClick={() => {
+            clear();
+          }}
+        >
+          Ac
+        </button>
+        <button
+          className="button button_edit"
+          onClick={() => {
+            trim();
+          }}
+        >
+          <img className="icon" src={icon_delete} alt="delete-icon" />
+        </button>
+        <div className="container">
+          {operations.map((operation) => {
+            return (
+              <button
+                className="button button_operation"
+                key={operation}
+                onClick={() => {
+                  handleOperator(operation);
+                }}
+              >
+                {operation}
+              </button>
+            );
+          })}
+          <div className="container container_b">
+            {buttons.map((button) => {
               return (
                 <button
-                  className="button button_operation"
-                  key={operation}
+                  className="button button_number"
+                  key={button}
                   onClick={() => {
-                    handleOperator(operation);
+                    handleClick(button);
                   }}
                 >
-                  {operation}
+                  {button}
                 </button>
               );
             })}
-            <div className="container container_b">
-              {buttons.map((button) => {
-                return (
-                  <button
-                    className="button button_number"
-                    key={button}
-                    onClick={() => {
-                      handleClick(button);
-                    }}
-                  >
-                    {button}
-                  </button>
-                );
-              })}
-            </div>
-            <button
-              className="button button_result"
-              onClick={() => {
-                getOperation();
-              }}
-            >
-              =
-            </button>
           </div>
+          <button
+            className="button button_result"
+            onClick={() => {
+              getOperation();
+            }}
+          >
+            =
+          </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

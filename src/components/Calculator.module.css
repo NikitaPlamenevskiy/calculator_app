@@ -71,7 +71,7 @@
   cursor: pointer;
 }
 
-.button:active {
+.btn:active {
   border: 1px solid rgb(56, 185, 255, 0.5);
   box-shadow: 0px 0px 20px rgba(96, 190, 255, 0.8);
 }

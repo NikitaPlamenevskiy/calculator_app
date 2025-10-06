@@ -1,3 +1,11 @@
+/* 
+TODO:
+Добавить математические функции 
+Добавить проверку деления на ноль 
+Добавить обрезание числа при получении длинного результата
+Заполнить README
+*/
+
 import { useState } from "react";
 import styles from "./Calculator.module.css";
 import icon_delete from "../icon_delete.svg";

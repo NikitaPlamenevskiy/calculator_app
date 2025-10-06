@@ -1,24 +1,6 @@
 import { useState } from "react";
-import calculatorStyels from "./Calculator.module.css";
+import styles from "./Calculator.module.css";
 import icon_delete from "../icon_delete.svg";
-
-const {
-  calculator,
-  btn,
-  button_number,
-  button_math,
-  button_clear,
-  icon,
-  calculator__screen,
-  calculator__operation,
-  calculator__result,
-  container_top,
-  container,
-  container_numbers,
-  container_operations,
-  button_long,
-  button_operation,
-} = calculatorStyels;
 
 const buttons = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "."];
 
@@ -88,22 +70,20 @@ function Calculator() {
   }
   return (
     <>
-      <div className={calculator}>
-        <div className={calculator__screen}>
-          <p className={calculator__operation}>
+      <div className={styles.calculator}>
+        <div className={styles.calculator__screen}>
+          <p className={styles.calculator__operation}>
             {value.a} {value.operation} {value.b}
           </p>
-          <h1 className={calculator__result}>
-            {result}
-          </h1>
+          <h1 className={styles.calculator__result}>{result}</h1>
         </div>
-        <div className={container_top}>
-          <button className={`${btn} ${button_math}`}>e</button>
-          <button className={`${btn} ${button_math}`}>sin</button>
-          <button className={`${btn} ${button_math}`}>cos</button>
-          <button className={`${btn} ${button_math}`}>deg</button>
+        <div className={styles.container_top}>
+          <button className={`${styles.btn} ${styles.button_math}`}>e</button>
+          <button className={`${styles.btn} ${styles.button_math}`}>sin</button>
+          <button className={`${styles.btn} ${styles.button_math}`}>cos</button>
+          <button className={`${styles.btn} ${styles.button_math}`}>deg</button>
           <button
-            className={`${btn} ${button_clear}`}
+            className={`${styles.btn} ${styles.button_clear}`}
             onClick={() => {
               clear();
             }}
@@ -111,15 +91,15 @@ function Calculator() {
             AC
           </button>
           <button
-            className={btn}
+            className={styles.btn}
             onClick={() => {
               trim();
             }}
           >
-            <img className={icon} src={icon_delete} alt="delete-icon" />
+            <img className={styles.icon} src={icon_delete} alt="delete-icon" />
           </button>
           <button
-            className={`${btn} ${button_operation}`}
+            className={`${styles.btn} ${styles.button_operation}`}
             onClick={() => {
               handleOperator("/");
             }}
@@ -127,19 +107,21 @@ function Calculator() {
             /
           </button>
           <button
-            className={`${btn} ${button_operation}`}
+            className={`${styles.btn} ${styles.button_operation}`}
             onClick={() => {
               handleOperator("*");
             }}
           >
             *
           </button>
-          <div className={container}>
-            <div className={container_numbers}>
+          <div className={styles.container}>
+            <div className={styles.container_numbers}>
               {buttons.map((button) => {
                 return (
                   <button
-                    className={`${btn} ${button === 0 ? button_number : ""}`}
+                    className={`${styles.btn} ${
+                      button === 0 ? styles.button_number : ""
+                    }`}
                     key={button}
                     onClick={() => {
                       handleClick(button);
@@ -150,9 +132,9 @@ function Calculator() {
                 );
               })}
             </div>
-            <div className={container_operations}>
+            <div className={styles.container_operations}>
               <button
-                className={`${btn} ${button_operation}`}
+                className={`${styles.btn} ${styles.button_operation}`}
                 onClick={() => {
                   handleOperator("-");
                 }}
@@ -160,7 +142,7 @@ function Calculator() {
                 -
               </button>
               <button
-                className={`${btn} ${button_operation} ${button_long}`}
+                className={`${styles.btn} ${styles.button_operation} ${styles.button_long}`}
                 onClick={() => {
                   handleOperator("+");
                 }}
@@ -168,7 +150,7 @@ function Calculator() {
                 +
               </button>
               <button
-                className={`${btn} ${button_operation} ${button_long}`}
+                className={`${styles.btn} ${styles.button_operation} ${styles.button_long}`}
                 onClick={() => {
                   getOperation();
                 }}

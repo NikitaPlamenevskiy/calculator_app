@@ -1,9 +1,10 @@
+import { useState } from "react";
 import calculatorStyels from "./Calculator.module.css";
 import icon_delete from "../icon_delete.svg";
 
 const {
   calculator,
-  button,
+  btn,
   button_number,
   button_math,
   button_clear,
@@ -19,48 +20,158 @@ const {
   button_operation,
 } = calculatorStyels;
 
+const buttons = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "."];
+
 function Calculator() {
+  const [value, setValue] = useState({
+    a: null,
+    b: null,
+    operation: "",
+  });
+
+  const [result, setResult] = useState("");
+
+  function handleClick(button) {
+    if (value.operation === "") {
+      setValue({ ...value, a: (value.a ?? "") + button });
+    } else {
+      setValue({ ...value, b: (value.b ?? "") + button });
+    }
+  }
+
+  function handleOperator(button) {
+    if (value.a === null) {
+      setValue({ ...value, a: "0", operation: button });
+    } else {
+      setValue({ ...value, operation: button });
+    }
+  }
+
+  function getOperation() {
+    const operators = {
+      "+": (a, b) => {
+        return `=${a + b}`;
+      },
+      "-": (a, b) => {
+        return `=${a - b}`;
+      },
+      "*": (a, b) => {
+        return `=${a * b}`;
+      },
+      "/": (a, b) => {
+        return `=${a / b}`;
+      },
+    };
+
+    if (operators[value.operation]) {
+      setResult(operators[value.operation](Number(value.a), Number(value.b)));
+    }
+  }
+
+  function clear() {
+    setValue({ a: null, b: null, operation: "" });
+    setResult("");
+  }
+
+  function trim() {
+    if (value.b !== null) {
+      setValue({
+        ...value,
+        b: value.b.slice(0, -1),
+      });
+    } else if (value.a !== null) {
+      setValue({
+        ...value,
+        a: value.a.slice(0, -1),
+      });
+    }
+  }
   return (
     <>
       <div className={calculator}>
         <div className={calculator__screen}>
-          <p className={calculator__operation}>6000/2</p>
-          <h1 className={calculator__result}>=12546</h1>
+          <p className={calculator__operation}>
+            {value.a} {value.operation} {value.b}
+          </p>
+          <h1 className={calculator__result}>
+            {result}
+          </h1>
         </div>
         <div className={container_top}>
-          <button className={`${button} ${button_math}`}>e</button>
-          <button className={`${button} ${button_math}`}>sin</button>
-          <button className={`${button} ${button_math}`}>cos</button>
-          <button className={`${button} ${button_math}`}>deg</button>
-          <button className={`${button} ${button_clear}`}>AC</button>
-          <button className={button}>
+          <button className={`${btn} ${button_math}`}>e</button>
+          <button className={`${btn} ${button_math}`}>sin</button>
+          <button className={`${btn} ${button_math}`}>cos</button>
+          <button className={`${btn} ${button_math}`}>deg</button>
+          <button
+            className={`${btn} ${button_clear}`}
+            onClick={() => {
+              clear();
+            }}
+          >
+            AC
+          </button>
+          <button
+            className={btn}
+            onClick={() => {
+              trim();
+            }}
+          >
             <img className={icon} src={icon_delete} alt="delete-icon" />
           </button>
-          <button className={`${button} ${button_operation}`}>/</button>
-          <button className={`${button} ${button_operation}`}>*</button>
+          <button
+            className={`${btn} ${button_operation}`}
+            onClick={() => {
+              handleOperator("/");
+            }}
+          >
+            /
+          </button>
+          <button
+            className={`${btn} ${button_operation}`}
+            onClick={() => {
+              handleOperator("*");
+            }}
+          >
+            *
+          </button>
           <div className={container}>
             <div className={container_numbers}>
-              <button className={`${button}`}>7</button>
-              <button className={`${button}`}>8</button>
-              <button className={`${button}`}>9</button>
-              <button className={`${button}`}>4</button>
-              <button className={`${button}`}>5</button>
-              <button className={`${button}`}>6</button>
-              <button className={`${button}`}>1</button>
-              <button className={`${button}`}>2</button>
-              <button className={`${button}`}>3</button>
-              <button className={`${button} ${button_number}`}>0</button>
-              <button className={`${button}`}>.</button>
+              {buttons.map((button) => {
+                return (
+                  <button
+                    className={`${btn} ${button === 0 ? button_number : ""}`}
+                    key={button}
+                    onClick={() => {
+                      handleClick(button);
+                    }}
+                  >
+                    {button}
+                  </button>
+                );
+              })}
             </div>
             <div className={container_operations}>
-              <button className={`${button} ${button_operation}`}>-</button>
               <button
-                className={`${button} ${button_operation} ${button_long}`}
+                className={`${btn} ${button_operation}`}
+                onClick={() => {
+                  handleOperator("-");
+                }}
+              >
+                -
+              </button>
+              <button
+                className={`${btn} ${button_operation} ${button_long}`}
+                onClick={() => {
+                  handleOperator("+");
+                }}
               >
                 +
               </button>
               <button
-                className={`${button} ${button_operation} ${button_long}`}
+                className={`${btn} ${button_operation} ${button_long}`}
+                onClick={() => {
+                  getOperation();
+                }}
               >
                 =
               </button>

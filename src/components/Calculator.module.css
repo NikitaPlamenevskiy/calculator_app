@@ -23,17 +23,33 @@
   line-height: 72px;
 }
 
+.container_top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: fle;
+}
+
+.container_numbers {
+  width: 75%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.container_numbers {
-  /* max-width: 246px; */
+.container_operations {
+  width: 25%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 .button {
@@ -41,7 +57,7 @@
   justify-content: center;
   align-items: center;
   width: 62px;
-  height: 62px;
+  height: 60px;
   margin: 10px;
   font-size: 32px;
   border: 1px solid #ffffff;
@@ -71,6 +87,15 @@
 
 .button_number {
   width: 144px;
+}
+
+.button_operation {
+  color: #109dff;
+  background-color: #ade2ff;
+}
+
+.button_long {
+  height: 96px;
 }
 
 .icon {

@@ -49,6 +49,9 @@ function Calculator() {
         return `=${a * b}`;
       },
       "/": (a, b) => {
+        if (b === 0) {
+          return "Деление на ноль невозможно";
+        }
         return `=${a / b}`;
       },
     };

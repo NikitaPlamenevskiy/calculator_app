@@ -86,7 +86,16 @@ function Calculator() {
           <h1 className={styles.calculator__result}>{result}</h1>
         </div>
         <div className={styles.container_top}>
-          <button className={`${styles.btn} ${styles.button_math}`}>e</button>
+          <button
+            className={`${styles.btn} ${styles.button_math}`}
+            onClick={() => {
+              value.operation === ""
+                ? setValue({ ...value, a: "2.71828" })
+                : setValue({ ...value, b: "2.71828" });
+            }}
+          >
+            e
+          </button>
           <button className={`${styles.btn} ${styles.button_math}`}>sin</button>
           <button className={`${styles.btn} ${styles.button_math}`}>cos</button>
           <button className={`${styles.btn} ${styles.button_math}`}>deg</button>

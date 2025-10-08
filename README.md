@@ -16,7 +16,7 @@ My first solo made project based on learning React in Front-end world.
 - Delete input digits 
 
 <picture>
-    <img src="./src/calculator_app.png" alt="calculator image">
+    <img src="./src/assets/images/calculator_app.png" alt="calculator image">
 </picture>
 
 ## Basic commands for running project: 

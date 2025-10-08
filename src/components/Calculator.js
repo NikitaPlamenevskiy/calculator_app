@@ -8,7 +8,7 @@ TODO:
 
 import { useState } from "react";
 import styles from "./Calculator.module.css";
-import icon_delete from "../icon_delete.svg";
+import icon_delete from "../assets/images/icon_delete.svg";
 
 const buttons = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "."];
 

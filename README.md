@@ -20,7 +20,7 @@ My first solo made project based on learning React in Front-end world.
     <img src="./src/calculator_app.png" alt="calculator image">
 </picture>
 
-Basic comands for running project: 
+Basic commands for running project: 
 ```
 git clone https://github.com/NikitaPlamenevskiy/calculator_app.git
 npm install 

@@ -21,6 +21,8 @@ My first solo made project based on learning React in Front-end world.
 </picture>
 
 Basic comands for running project: 
-- git clone https://github.com/NikitaPlamenevskiy/calculator_app.git
-- npm install 
-- npm start 
+```
+git clone https://github.com/NikitaPlamenevskiy/calculator_app.git
+npm install 
+npm start 
+```

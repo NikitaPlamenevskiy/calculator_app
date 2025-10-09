@@ -40,23 +40,19 @@ function Calculator() {
   function getOperation() {
     const operators = {
       "+": (a, b) => {
-        return `=${a + b}`;
+        return a + b;
       },
       "-": (a, b) => {
-        return `=${a - b}`;
+        return a - b;
       },
       "*": (a, b) => {
-        return `=${a * b}`;
+        return a * b;
       },
       "/": (a, b) => {
         if (b === 0) {
-          return (
-            <p style={{ margin: "0px", fontSize: "20px", color: "#858585" }}>
-              Деление на ноль невозможно
-            </p>
-          );
+          return "error";
         }
-        return `=${a / b}`;
+        return a / b;
       },
     };
 
@@ -91,7 +87,16 @@ function Calculator() {
             {value.a} {value.operation} {value.b}
           </p>
           <h1 className={styles.calculator__result}>
-            {result.length > 11 ? result.slice(0, 11) : result}
+            {result !== "" && result !== "error" && "="}
+            {result === "error" ? (
+              <span style={{ fontSize: "21px" }}>
+                Деление на ноль невозможно
+              </span>
+            ) : Number.isInteger(result) ? (
+              result
+            ) : (
+              parseFloat(Number(result).toFixed(5))
+            )}
           </h1>
         </div>
         <div className={styles.container_top}>

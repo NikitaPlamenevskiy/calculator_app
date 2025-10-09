@@ -50,7 +50,11 @@ function Calculator() {
       },
       "/": (a, b) => {
         if (b === 0) {
-          return "Деление на ноль невозможно";
+          return (
+            <p style={{ margin: "0px", fontSize: "20px", color: "#858585" }}>
+              Деление на ноль невозможно
+            </p>
+          );
         }
         return `=${a / b}`;
       },
@@ -86,7 +90,9 @@ function Calculator() {
           <p className={styles.calculator__operation}>
             {value.a} {value.operation} {value.b}
           </p>
-          <h1 className={styles.calculator__result}>{result}</h1>
+          <h1 className={styles.calculator__result}>
+            {result.length > 11 ? result.slice(0, 11) : result}
+          </h1>
         </div>
         <div className={styles.container_top}>
           <button

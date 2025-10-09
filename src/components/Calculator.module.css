@@ -12,15 +12,14 @@
 
 .calculator__operation {
   margin: 0px;
+  height: 32px;
   color: #818181;
   font-size: 24px;
 }
 
 .calculator__result {
-  overflow-wrap: break-word;
-  word-break: break-word;
-  white-space: normal;
   margin: 0px;
+  height: 72px;
   color: #424242;
   font-size: 48px;
   font-weight: bold;
@@ -38,7 +37,6 @@
 .container {
   display: flex;
   justify-content: space-between;
-  align-items: fle;
 }
 
 .container_numbers {

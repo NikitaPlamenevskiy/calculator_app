@@ -108,7 +108,9 @@ function Calculator() {
           <button
             className={`${styles.btn} ${styles.button_math}`}
             onClick={() => {
-              setResult(value.a ** 2);
+              if (value.a !== null) {
+                setResult(value.a ** 2);
+              }
             }}
           >
             x<sup>2</sup>

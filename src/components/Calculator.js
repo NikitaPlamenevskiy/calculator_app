@@ -105,7 +105,14 @@ function Calculator() {
           >
             e
           </button>
-          <button className={`${styles.btn} ${styles.button_math}`}>sin</button>
+          <button
+            className={`${styles.btn} ${styles.button_math}`}
+            onClick={() => {
+              setResult(value.a ** 2);
+            }}
+          >
+            x<sup>2</sup>
+          </button>
           <button className={`${styles.btn} ${styles.button_math}`}>cos</button>
           <button className={`${styles.btn} ${styles.button_math}`}>deg</button>
           <button

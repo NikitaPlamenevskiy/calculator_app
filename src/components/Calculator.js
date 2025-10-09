@@ -93,7 +93,7 @@ function Calculator() {
                 Деление на ноль невозможно
               </span>
             ) : Number.isInteger(result) ? (
-              result
+              result.toString().slice(0, 11)
             ) : (
               parseFloat(Number(result).toFixed(5))
             )}

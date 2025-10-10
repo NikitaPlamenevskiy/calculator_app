@@ -5,7 +5,8 @@ TODO:
 
 import { useState } from "react";
 import styles from "./Calculator.module.css";
-import icon_delete from "../assets/images/icon_delete.svg";
+import { TbMath } from "react-icons/tb";
+import { LuDelete } from "react-icons/lu";
 
 const buttons = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "."];
 
@@ -112,15 +113,34 @@ function Calculator() {
             onClick={() => {
               if (value.a !== null) {
                 setResult(value.a ** 2);
+                setValue({ ...value, a: null, b: null, operation: "" });
+              }
+
+              if (result !== "" && value.a == null) {
+                setResult(result ** 2);
               }
             }}
           >
             x<sup>2</sup>
           </button>
-          <button className={`${styles.btn} ${styles.button_math}`}>cos</button>
+          <button
+            className={`${styles.btn} ${styles.button_math}`}
+            onClick={() => {
+              if (value.a !== null) {
+                setResult(Math.sqrt(value.a));
+                setValue({ ...value, a: null, b: null, operation: "" });
+              }
+
+              if (result !== "" && value.a == null) {
+                setResult(Math.sqrt(result));
+              }
+            }}
+          >
+            <TbMath />
+          </button>
           <button className={`${styles.btn} ${styles.button_math}`}>deg</button>
           <button
-            className={`${styles.btn} ${styles.button_clear}`}
+            className={`${styles.btn} ${styles.btn_grey}`}
             onClick={() => {
               clear();
             }}
@@ -133,7 +153,7 @@ function Calculator() {
               trim();
             }}
           >
-            <img className={styles.icon} src={icon_delete} alt="delete-icon" />
+            <LuDelete className={styles.btn_grey} />
           </button>
           <button
             className={`${styles.btn} ${styles.button_operation}`}

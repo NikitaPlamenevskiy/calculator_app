@@ -12,6 +12,8 @@ My first solo made project based on learning React in Front-end world.
 - Subtraction
 - Sum 
 - The number E
+- x<sup>2</sup>
+- Sqrt
 - AC (All clear)
 - Delete input digits 
 
